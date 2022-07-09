@@ -1,0 +1,29 @@
+.loginBtn {
+    background-color: #53799a;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 6px;
+}
+
+.searchInput:focus-visible {
+    outline: none;
+}
+
+.headerText{ 
+    text-align: left;
+}
+
+.header { 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rightHeaderContent {
+    display: flex;
+}
+
