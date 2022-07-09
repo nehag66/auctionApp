@@ -1,0 +1,60 @@
+.featured_product_outer_div {
+    margin: 20px 0;
+    -webkit-box-shadow: 0 2px 3px rgb(0 0 0 / 16%);
+    box-shadow: 0 2px 3px rgb(0 0 0 / 16%);
+    border-radius: 4px;
+    width: 100%;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    overflow-x: auto;
+}
+
+.featured_product_list {
+    display: flex;
+    justify-content: space-evenly;
+    width: 126vw;
+}
+
+.indiItem {
+    border: 1px solid #e6e6e6;
+    border-radius: 9px;
+    background: #fff;
+    z-index: 2;
+    position: relative;
+    padding: 10px;
+    padding-bottom: 30px;
+    margin: 0 5px;
+}
+
+.deleteAndBid {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bidBtn {
+    padding: 11px 8px;
+    border-radius: 2px;
+    font-size: 12px;
+    background-color: #e1edf4;
+    color: #004b5d!important;
+    display: inline-block;
+    clear: both;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.deleteBtn {
+    padding: 11px 8px;
+    border-radius: 2px;
+    font-size: 12px;
+    background-color: #e1edf4;
+    color: #ab0f0f!important;
+    display: inline-block;
+    clear: both;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+/* .image {
+
+} */
