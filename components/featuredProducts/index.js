@@ -1,45 +1,42 @@
 import { useEffect, useState } from "react";
+import FeaturedProduct from "../featuredProfuct";
 import styles from './FeaturedProducts.module.css'
 
 const FeaturedProducts = (props) => {
 
     const [data, setData] = useState([])
-
-    const getAllData = async () => {
-        const res = await fetch('http://3.110.56.143/api/items?sort=id');
-        const result = await res.json();
-        console.log("data:====> ", result)
-        setData(result.items)
-    }
+    const [brandArray, setBrandArray] = useState([])
 
     useEffect(() => {
         getAllData();
-      }, [])
-    
+    }, [])
+
+    //getting all the products
+    const getAllData = async () => {
+        const res = await fetch('http://3.110.56.143/api/items?sort=id');
+        const result = await res.json();
+        setData(result.items);
+        let brands = result.items.map(ele => {
+            let brandName = ele.brandName;
+            return brandName;
+        })
+        setBrandArray(brands);
+    }   
+
+    const gfp = (brand) => {
+        let filtered = data.filter(ele => {
+           return ele.brandName == brand;
+        })
+        return filtered;
+    }
+
     return (
         <div className={styles.featured_product_outer_div}>
-            <h2>Featured Products</h2>
-            <div className={styles.featured_product_list}>
             {
-                data && data.map((key, index) => {
-                    return (
-                        <div className={styles.indiItem} key={index}>
-                            <ul>
-                                <li style={{ fontSize: "18px", color: "#000000" }}>{key.name}</li>
-                                <li style={{ fontSize: "16px", color: "#7b7674" }}>{key.brandName}</li>
-                                <li style={{ fontSize: "16px", color: "#7b7674" }}>{key.description}</li>
-                                <li style={{ fontSize: "16px", color: "#000000", padding: "20px 0"}}>&#8377;{key.marketValue}</li>
-                                <li style={{ fontSize: "16px", color: "#7b7674" }}>Last Bid Date: {key.lastBidDate}</li>
-                            </ul> 
-                            <div className={styles.deleteAndBid}> 
-                                <button className={styles.bidBtn}>Make Bid</button> 
-                                <button className={styles.deleteBtn}>Delete Item</button>   
-                            </div>
-                        </div>
-                    )
+                brandArray.map(brand => {
+                    return  <FeaturedProduct filteredProducts={gfp(brand)}/>
                 })
             }
-            </div>
         </div>
     )
 }
