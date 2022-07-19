@@ -15,26 +15,36 @@ const FeaturedProducts = (props) => {
     const getAllData = async () => {
         const res = await fetch('http://3.110.56.143/api/items?sort=id');
         const result = await res.json();
+        console.log("result: ", result)
         setData(result.items);
         let brands = result.items.map(ele => {
             let brandName = ele.brandName;
             return brandName;
         })
-        setBrandArray(brands);
+
+        setBrandArray(brands.filter(onlyUnique));
+        
     }   
+    // console.log("brandArray: ", brandArray)
+
+    //helper function
+    const onlyUnique = (value, index, self) => {
+        return self.indexOf(value) === index;
+    }
 
     const gfp = (brand) => {
         let filtered = data.filter(ele => {
            return ele.brandName == brand;
         })
+        
         return filtered;
     }
 
     return (
         <div className={styles.featured_product_outer_div}>
             {
-                brandArray.map(brand => {
-                    return  <FeaturedProduct filteredProducts={gfp(brand)}/>
+                brandArray.map((brand, index) => {
+                    return  <FeaturedProduct key={index} filteredProducts={gfp(brand)}/>
                 })
             }
         </div>

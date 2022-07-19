@@ -2,14 +2,20 @@
     display: flex;
 }
 .featured_product_outer_div {
-    margin: 20px 0;
-    -webkit-box-shadow: 0 2px 3px rgb(0 0 0 / 16%);
+    margin: 20px 0px;
+    padding: 10px 16px;
+    /* display: flex; */
+    /* flex-direction: row; */
     box-shadow: 0 2px 3px rgb(0 0 0 / 16%);
     border-radius: 4px;
     width: 100%;
     border: 1px solid #e6e6e6;
     background-color: #fff;
     overflow-x: auto;
+}
+
+.display_to_flex {
+    display: flex;
 }
 
 .featured_product_list {
@@ -24,7 +30,7 @@
     border: 1px solid #e6e6e6;
     border-radius: 9px;
     background: #fff;
-    z-index: 2;
+    /* z-index: 2; */
     position: relative;
     padding: 10px;
     padding-bottom: 30px;
